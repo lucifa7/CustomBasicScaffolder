@@ -59,9 +59,7 @@ namespace Happy.Scaffolding.MVC.Scaffolders
         {
             CodeType modelType = _codeGeneratorViewModel.ModelType.CodeType;
             ModelType dbContextType = _codeGeneratorViewModel.DbContextModelType;
-            string dbContextTypeName = (dbContextType != null)
-                ? dbContextType.TypeName
-                : null;
+            string dbContextTypeName = dbContextType?.TypeName;
 
             if (modelType == null)
             {

@@ -80,12 +80,7 @@ namespace Happy.Scaffolding.MVC.UI
 
         public MvcCodeGeneratorViewModel(CodeGenerationContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException("context");
             //_useMasterPage = true;
             _GenerateViews = true;
             _ReferenceScriptLibraries = true;
@@ -151,10 +146,7 @@ namespace Happy.Scaffolding.MVC.UI
 
         private void OnClose(bool result)
         {
-            if (Close != null)
-            {
-                Close(result);
-            }
+            Close?.Invoke(result);
         }
 
         private ModelType _modelType;
@@ -566,10 +558,12 @@ namespace Happy.Scaffolding.MVC.UI
         }
 
         private bool IsAbstract(CodeType codeType) {
-            CodeClass2 codeClass2 = codeType as CodeClass2;
-            if (codeClass2 != null) {
+            if (codeType is CodeClass2 codeClass2)
+            {
                 return codeClass2.IsAbstract;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }

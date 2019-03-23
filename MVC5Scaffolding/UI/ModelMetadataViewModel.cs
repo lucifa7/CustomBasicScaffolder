@@ -127,10 +127,7 @@ namespace Happy.Scaffolding.MVC.UI
 
         private void OnClose(bool result)
         {
-            if (Close != null)
-            {
-                Close(result);
-            }
+            Close?.Invoke(result);
         }
     }
 
@@ -194,9 +191,9 @@ namespace Happy.Scaffolding.MVC.UI
             }
         }
 
-        public string strDateType
+        public string StrDateType
         {
-            get { return DataModel.strDateType; }
+            get { return DataModel.StrDateType; }
         }
 
         public int MaxLength

@@ -7,7 +7,7 @@ namespace Happy.Scaffolding.MVC.Models
     public class MetaColumnInfo
     {
         public string ShortTypeName { get; set; }
-        public string strDateType { get; set; }
+        public string StrDateType { get; set; }
         public euColumnType DataType { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
@@ -80,10 +80,10 @@ namespace Happy.Scaffolding.MVC.Models
         {
             this.Name = strName;
             this.ShortTypeName = strType;
-            this.strDateType = strType.Replace("?", "").Replace("System.", "").ToLower();
+            this.StrDateType = strType.Replace("?", "").Replace("System.", "").ToLower();
 
             if (!relatedModel)
-                this.DataType = GetColumnType(this.strDateType);
+                this.DataType = GetColumnType(this.StrDateType);
             else
             {
                 this.DataType = euColumnType.RelatedModel;

@@ -31,12 +31,7 @@ namespace Happy.Scaffolding.MVC.UI
 
         public SPCodeGeneratorViewModel(CodeGenerationContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException("context");
             //_useMasterPage = true;
             _GenerateViews = true;
             _ReferenceScriptLibraries = true;
@@ -86,7 +81,7 @@ namespace Happy.Scaffolding.MVC.UI
         //    }
         //}
 
-        private ObservableCollection<Visibility> _StepVisibale
+        private readonly ObservableCollection<Visibility> _StepVisibale
             = new ObservableCollection<Visibility>() { Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed };
 
         public ObservableCollection<Visibility> StepVisibale 
@@ -228,10 +223,7 @@ namespace Happy.Scaffolding.MVC.UI
 
         private void OnClose(bool result)
         {
-            if (Close != null)
-            {
-                Close(result);
-            }
+            Close?.Invoke(result);
         }
 
         #endregion
